@@ -15,7 +15,7 @@ import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.findByType
 import org.gradle.kotlin.dsl.getByType
 
-internal fun Project.getBuildExtension(): CommonExtension<out BuildFeatures, out BuildType, out DefaultConfig, out ProductFlavor, out AndroidResources, out Installation>? =
+internal fun Project.getBuildExtension(): CommonExtension<out BuildFeatures, out BuildType, out DefaultConfig, out ProductFlavor>? =
     extensions.findByType<ApplicationExtension>() ?: extensions.findByType<LibraryExtension>()
 
 internal val Project.libs: VersionCatalog

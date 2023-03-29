@@ -10,13 +10,7 @@ class TwoFasComposePlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             getBuildExtension()?.apply {
-                buildFeatures {
-                    compose = true
-                }
 
-                composeOptions {
-                    kotlinCompilerExtensionVersion = libs.findVersionString("composeCompiler")
-                }
             }
         }
     }
