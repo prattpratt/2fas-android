@@ -204,6 +204,11 @@ class Strings(c: Context) {
     val addGalleryErrorBody = c.getString(R.string.tokens__qr_read_image_try_again)
     val addGalleryErrorPositiveCta = c.getString(R.string.tokens__try_again)
 
+    val guidesSelectTitle = c.getString(R.string.guides__select_title)
+    val guidesSelectDescription = c.getString(R.string.guides__select_description)
+    val guidesSelectProvideGuide = c.getString(R.string.guides__select_provide_guide)
+    val guidesSelectProvideGuideCta = c.getString(R.string.guides__select_provide_guide_cta)
+
 
 //    val add = c.getString(R.string.tokens__add_)
 }

@@ -19,6 +19,7 @@ internal object NavArg {
 
 @Composable
 fun AddServiceModal(
+    openGuides: () -> Unit = {},
     onAddedSuccessfully: (RecentlyAddedService) -> Unit = {},
 ) {
     val navController = rememberNavController()
@@ -34,6 +35,7 @@ fun AddServiceModal(
             composable(route = "main") {
                 AddServiceScanScreen(
                     openManual = { navController.navigate("manual") },
+                    openGuides = openGuides,
                     onAddedSuccessfully = {
                         onAddedSuccessfully(it)
                         navController.navigate("success/${it.serviceId}") { popUpTo(0) { inclusive = true } }

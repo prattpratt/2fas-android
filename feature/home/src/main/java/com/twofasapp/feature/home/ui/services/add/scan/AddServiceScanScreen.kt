@@ -53,6 +53,7 @@ import org.koin.androidx.compose.koinViewModel
 internal fun AddServiceScanScreen(
     viewModel: AddServiceScanViewModel = koinViewModel(),
     openManual: () -> Unit,
+    openGuides: () -> Unit,
     onAddedSuccessfully: (RecentlyAddedService) -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -156,10 +157,10 @@ internal fun AddServiceScanScreen(
             )
         }
 
-//        SettingsLink(
-//            title = TwLocale.strings.addWithGuide,
-//            icon = TwIcons.Guide
-//        ) { backHandler.onBackPressed() }
+        SettingsLink(
+            title = TwLocale.strings.addWithGuide,
+            icon = TwIcons.Guide
+        ) { openGuides() }
 
         Spacer(modifier = Modifier.height(16.dp))
     }

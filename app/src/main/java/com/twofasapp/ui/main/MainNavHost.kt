@@ -14,10 +14,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import com.google.accompanist.navigation.material.BottomSheetNavigator
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.google.accompanist.navigation.material.bottomSheet
 import com.twofasapp.android.navigation.NavAnimation
+import com.twofasapp.android.navigation.NavArg
+import com.twofasapp.android.navigation.Screen
 import com.twofasapp.android.navigation.clearGraphBackStack
 import com.twofasapp.android.navigation.intentFor
 import com.twofasapp.android.navigation.withArg
@@ -32,6 +35,9 @@ import com.twofasapp.feature.browserext.notification.BrowserExtGraph
 import com.twofasapp.feature.browserext.notification.browserExtNavigation
 import com.twofasapp.feature.externalimport.navigation.ExternalImportGraph
 import com.twofasapp.feature.externalimport.navigation.externalImportNavigation
+import com.twofasapp.feature.home.navigation.GuideInitRoute
+import com.twofasapp.feature.home.navigation.GuidePagerRoute
+import com.twofasapp.feature.home.navigation.GuidesRoute
 import com.twofasapp.feature.home.navigation.HomeGraph
 import com.twofasapp.feature.home.navigation.HomeNavigationListener
 import com.twofasapp.feature.home.navigation.NotificationsGraph
@@ -168,7 +174,8 @@ internal fun MainNavHost(
 
             bottomSheet(ModalNavigation.AddService.route) {
                 AddServiceModal(
-                    onAddedSuccessfully = { recentlyAddedService = it }
+                    onAddedSuccessfully = { recentlyAddedService = it },
+                    openGuides = { navController.navigate(Screen.Guides.route) }
                 )
             }
 
@@ -179,6 +186,20 @@ internal fun MainNavHost(
                         scope.launch { bottomSheetState.hide() }
                     }
                 )
+            }
+
+            composable(Screen.Guides.route) {
+                GuidesRoute(
+                    openGuide = { navController.navigate(Screen.GuideInit.routeWithArgs(NavArg.Guide to it.name)) }
+                )
+            }
+
+            composable(Screen.GuideInit.route, listOf(NavArg.Guide)) {
+                GuideInitRoute()
+            }
+
+            composable(Screen.GuidePager.route, listOf(NavArg.Guide)) {
+                GuidePagerRoute()
             }
         }
     }

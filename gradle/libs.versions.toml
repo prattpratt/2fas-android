@@ -1,6 +1,6 @@
 [versions]
 accompanist = "0.31.6-rc"
-agp = "8.2.0-alpha15"
+agp = "8.2.0-alpha16"
 coil = "2.4.0"
 compose = "1.5.0"
 composeActivity = "1.7.2"
