@@ -16,8 +16,8 @@ fun GuidesRoute(
 }
 
 @Composable
-fun GuideInitRoute() {
-    GuideInitScreen()
+fun GuideInitRoute(guide: Guide) {
+    GuideInitScreen(guide)
 }
 
 @Composable

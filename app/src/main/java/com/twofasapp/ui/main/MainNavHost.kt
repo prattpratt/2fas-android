@@ -195,7 +195,7 @@ internal fun MainNavHost(
             }
 
             composable(Screen.GuideInit.route, listOf(NavArg.Guide)) {
-                GuideInitRoute()
+                GuideInitRoute(guide = enumValueOf(it.arguments!!.getString(NavArg.Guide.name)!!))
             }
 
             composable(Screen.GuidePager.route, listOf(NavArg.Guide)) {
