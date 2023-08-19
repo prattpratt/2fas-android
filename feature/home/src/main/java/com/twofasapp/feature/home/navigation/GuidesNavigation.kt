@@ -16,11 +16,23 @@ fun GuidesRoute(
 }
 
 @Composable
-fun GuideInitRoute(guide: Guide) {
-    GuideInitScreen(guide)
+fun GuideInitRoute(
+    guide: Guide,
+    openGuide: (Guide, Int) -> Unit,
+) {
+    GuideInitScreen(
+        guide = guide,
+        openGuide = openGuide,
+    )
 }
 
 @Composable
-fun GuidePagerRoute() {
-    GuidePagerScreen()
+fun GuidePagerRoute(
+    guide: Guide,
+    guideVariantIndex: Int,
+) {
+    GuidePagerScreen(
+        guide = guide,
+        guideVariantIndex = guideVariantIndex
+    )
 }

@@ -36,7 +36,6 @@ import com.twofasapp.designsystem.TwIcons
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.ResponsiveText
 import com.twofasapp.designsystem.common.TwTopAppBar
-import com.twofasapp.feature.home.R
 import com.twofasapp.locale.TwLocale
 import org.koin.androidx.compose.koinViewModel
 
@@ -158,14 +157,7 @@ private fun GuideItem(
             modifier = Modifier.padding(horizontal = 8.dp),
         ) {
             Image(
-                painter = painterResource(
-                    id = when (guide) {
-                        Guide.Facebook -> R.drawable.img_services_empty
-                        Guide.Twitter -> R.drawable.img_services_empty
-                        Guide.Amazon -> R.drawable.img_services_empty
-                        Guide.Universal -> R.drawable.img_services_empty
-                    }
-                ),
+                painter = painterResource(id = guide.image),
                 contentDescription = null,
                 modifier = Modifier.size(100.dp)
             )

@@ -195,11 +195,24 @@ internal fun MainNavHost(
             }
 
             composable(Screen.GuideInit.route, listOf(NavArg.Guide)) {
-                GuideInitRoute(guide = enumValueOf(it.arguments!!.getString(NavArg.Guide.name)!!))
+                GuideInitRoute(
+                    guide = enumValueOf(it.arguments!!.getString(NavArg.Guide.name)!!),
+                    openGuide = { guide, guideVariantIndex ->
+                        navController.navigate(
+                            Screen.GuidePager.routeWithArgs(
+                                NavArg.Guide to guide.name,
+                                NavArg.GuideVariantIndex to guideVariantIndex,
+                            )
+                        )
+                    }
+                )
             }
 
-            composable(Screen.GuidePager.route, listOf(NavArg.Guide)) {
-                GuidePagerRoute()
+            composable(Screen.GuidePager.route, listOf(NavArg.Guide, NavArg.GuideVariantIndex)) {
+                GuidePagerRoute(
+                    guide = enumValueOf(it.arguments!!.getString(NavArg.Guide.name)!!),
+                    guideVariantIndex = it.arguments!!.getInt(NavArg.GuideVariantIndex.name),
+                )
             }
         }
     }

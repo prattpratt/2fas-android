@@ -12,5 +12,5 @@ sealed class Screen(val route: String) {
 
     data object Guides : Screen("guides")
     data object GuideInit : Screen("guides/init?guide={${NavArg.Guide.name}}")
-    data object GuidePager : Screen("guides/pager?guide={${NavArg.Guide.name}}")
+    data object GuidePager : Screen("guides/pager?guide={${NavArg.Guide.name}}&variant={${NavArg.GuideVariantIndex.name}}")
 }
