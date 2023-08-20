@@ -1,6 +1,6 @@
 {
     "serviceName": "Twitter",
-    "serviceId": "...",
+    "serviceId": "a2987ab4-ac5c-48ce-863c-d3d3d1220fdb",
     "flow": {
       "header": "Follow our guide to pair your Twitter account with 2FAS app.",
       "menu": {

@@ -1,6 +1,6 @@
 {
     "serviceName": "Amazon",
-    "serviceId": "--- !!! REPLACE !!! ---",
+    "serviceId": "d50d085c-87a1-4c03-80aa-d2384971c6f3",
     "flow": {
       "header": "Follow our guide to pair your Amazon account with 2FAS app.",
       "menu": {

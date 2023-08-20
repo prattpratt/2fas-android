@@ -17,7 +17,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -44,7 +46,6 @@ import com.twofasapp.feature.home.ui.guideinit.PreviewGuide
 import com.twofasapp.feature.home.ui.guides.Guide
 import com.twofasapp.feature.home.ui.guides.GuideJson
 import com.twofasapp.feature.home.ui.guides.getGuideJson
-import com.twofasapp.feature.home.ui.guides.image
 import com.twofasapp.feature.home.ui.guides.json
 import com.twofasapp.locale.TwLocale
 import kotlinx.coroutines.Dispatchers
@@ -144,7 +145,7 @@ private fun Content(
                             "account" -> com.twofasapp.designsystem.R.drawable.illustration_account
                             "app_button" -> com.twofasapp.designsystem.R.drawable.illustration_app_button
                             "secret_key" -> com.twofasapp.designsystem.R.drawable.illustration_secret_key
-                            else -> guide.image
+                            else -> com.twofasapp.designsystem.R.drawable.ic_placeholder
                         }
                     ),
                     contentDescription = null,

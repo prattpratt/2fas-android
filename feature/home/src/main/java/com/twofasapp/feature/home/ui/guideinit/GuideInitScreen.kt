@@ -21,18 +21,19 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.twofasapp.designsystem.TwTheme
 import com.twofasapp.designsystem.common.TwDivider
 import com.twofasapp.designsystem.common.TwTopAppBar
+import com.twofasapp.designsystem.ktx.assetAsBitmap
 import com.twofasapp.feature.home.ui.guides.Guide
 import com.twofasapp.feature.home.ui.guides.GuideJson
 import com.twofasapp.feature.home.ui.guides.getGuideJson
-import com.twofasapp.feature.home.ui.guides.image
+import com.twofasapp.feature.home.ui.guides.iconFile
 import com.twofasapp.feature.home.ui.guides.json
 import com.twofasapp.locale.TwLocale
 import kotlinx.coroutines.Dispatchers
@@ -80,6 +81,8 @@ private fun Content(
     guideJson: GuideJson,
     openGuide: (Guide, Int) -> Unit,
 ) {
+    val context = LocalContext.current
+
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -87,9 +90,9 @@ private fun Content(
         Spacer(modifier = Modifier.height(24.dp))
 
         Image(
-            painter = painterResource(id = guide.image),
+            bitmap = context.assetAsBitmap(guide.iconFile).asImageBitmap(),
             contentDescription = null,
-            modifier = Modifier.size(120.dp)
+            modifier = Modifier.size(60.dp)
         )
 
         Spacer(modifier = Modifier.height(24.dp))

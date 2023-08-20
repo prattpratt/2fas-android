@@ -1,7 +1,7 @@
 package com.twofasapp.feature.home.ui.guides
 
 import android.content.Context
-import com.twofasapp.feature.home.R
+import com.twofasapp.parsers.ServiceIcons
 import java.io.IOException
 
 enum class Guide {
@@ -20,13 +20,18 @@ val Guide.json: String
         Guide.Universal -> "universal.json"
     }
 
-val Guide.image: Int
+private val Guide.serviceId: String
     get() = when (this) {
-        Guide.Facebook -> R.drawable.img_services_empty
-        Guide.Twitter -> R.drawable.img_services_empty
-        Guide.Amazon -> R.drawable.img_services_empty
-        Guide.Universal -> R.drawable.img_services_empty
+        Guide.Facebook -> "744e788d-3975-43ac-8166-0029c9a0871c"
+        Guide.Twitter -> "a2987ab4-ac5c-48ce-863c-d3d3d1220fdb"
+        Guide.Amazon -> "d50d085c-87a1-4c03-80aa-d2384971c6f3"
+        Guide.Universal -> "89efcc2d-52f4-4ac3-988d-5d7f3b3cd0a7"
     }
+
+val Guide.iconFile: String
+    get() = ServiceIcons.getIcon(
+        collectionId = ServiceIcons.getIconCollection(serviceId),
+    )
 
 internal fun Context.getGuideJson(fileName: String): String {
     return try {
