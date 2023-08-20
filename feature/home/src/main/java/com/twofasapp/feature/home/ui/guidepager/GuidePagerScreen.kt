@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -135,8 +136,10 @@ private fun Content(
                 Spacer(modifier = Modifier.height(32.dp))
 
                 Text(
-                    text = steps[pagerState.currentPage].content,
-                    style = TwTheme.typo.body1,
+                    text = parseMarkdown(
+                        markdown = steps[pagerState.currentPage].content,
+                        typography = MaterialTheme.typography
+                    ),
                     color = TwTheme.color.onSurfacePrimary,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
@@ -144,8 +147,6 @@ private fun Content(
                         .padding(horizontal = 16.dp),
                 )
             }
-
-
         }
 
         Row(
