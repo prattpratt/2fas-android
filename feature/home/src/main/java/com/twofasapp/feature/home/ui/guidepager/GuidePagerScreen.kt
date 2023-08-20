@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -125,19 +126,36 @@ private fun Content(
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
 
-                Spacer(modifier = Modifier.height(32.dp))
+                Spacer(modifier = Modifier.fillMaxHeight(fraction = 0.1f))
 
                 Image(
-                    painter = painterResource(id = guide.image),
+                    painter = painterResource(
+                        id = when (steps[page].image) {
+                            "web_url" -> com.twofasapp.designsystem.R.drawable.illustration_web_url
+                            "web_account_1" -> com.twofasapp.designsystem.R.drawable.illustration_web_account_1
+                            "web_menu" -> com.twofasapp.designsystem.R.drawable.illustration_web_menu
+                            "2fas_type" -> com.twofasapp.designsystem.R.drawable.illustration_2fas_type
+                            "phone_qr" -> com.twofasapp.designsystem.R.drawable.illustration_phone_qr
+                            "gears" -> com.twofasapp.designsystem.R.drawable.illustration_gears
+                            "web_phone" -> com.twofasapp.designsystem.R.drawable.illustration_web_phone
+                            "retype" -> com.twofasapp.designsystem.R.drawable.illustration_retype
+                            "web_button" -> com.twofasapp.designsystem.R.drawable.illustration_web_button
+                            "push_notification" -> com.twofasapp.designsystem.R.drawable.illustration_push_notification
+                            "account" -> com.twofasapp.designsystem.R.drawable.illustration_account
+                            "app_button" -> com.twofasapp.designsystem.R.drawable.illustration_app_button
+                            "secret_key" -> com.twofasapp.designsystem.R.drawable.illustration_secret_key
+                            else -> guide.image
+                        }
+                    ),
                     contentDescription = null,
-                    modifier = Modifier.height(120.dp)
+                    modifier = Modifier.height(140.dp)
                 )
 
                 Spacer(modifier = Modifier.height(32.dp))
 
                 Text(
                     text = parseMarkdown(
-                        markdown = steps[pagerState.currentPage].content,
+                        markdown = steps[page].content,
                         typography = MaterialTheme.typography
                     ),
                     color = TwTheme.color.onSurfacePrimary,
@@ -151,7 +169,7 @@ private fun Content(
 
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
+            horizontalArrangement = Arrangement.Center,
         ) {
             repeat(stepsCount) { index ->
                 Box(
